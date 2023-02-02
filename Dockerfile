@@ -8,13 +8,13 @@ RUN go mod download && go mod verify
 
 COPY . ./
 
-RUN go build -o /jobs-handler .
+RUN go build -o /app .
 
 FROM alpine:3.16
 
 RUN apk --no-cache add ca-certificates
 
-COPY --from=builder /jobs-handler /
+COPY --from=builder /app /
 
-ENTRYPOINT ["/jobs-handler"]
+ENTRYPOINT ["/app"]
 CMD ["-h"]
