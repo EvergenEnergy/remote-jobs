@@ -37,7 +37,7 @@ jobs:
   build-push-docker:
     needs: [build, lint]
     runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
